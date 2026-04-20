@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, ArrowUpRight, Layers } from "lucide-react";
+import { ExternalLink, Github, ArrowUpRight, Layers, Eye } from "lucide-react";
 import { cn } from "../lib/utils";
+import ProjectDetailModal from "./ProjectDetailModal";
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   const projects = [
     {
       title: "Neural_Nexus_Platform",
       category: "ECOSYSTEM_ARCH",
       image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800",
       description: "A sustainable living platform built with Next.js and Tailwind CSS.",
-      tags: ["React", "Node.js", "PostgreSQL"],
+      longDescription: "Neural Nexus is a complex ecosystem architecture designed for high-performance data processing and visualization. It leverages a modern stack to ensure maximum scalability and real-time synchronization across distributed nodes.",
+      features: ["Real-time Data Streaming", "Neural Network Integration", "Distributed Ledger Storage", "Modular UI Components"],
+      tags: ["React", "Node.js", "PostgreSQL", "Redis"],
       link: "#",
       github: "#",
       dataCode: "PRJ_01_X"
@@ -20,7 +25,9 @@ const Projects = () => {
       category: "DATA_VISUALIZATION",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
       description: "A modern financial dashboard with real-time analytics and tracking.",
-      tags: ["TypeScript", "D3.js", "Firebase"],
+      longDescription: "The Fintech Control Center provides a comprehensive overview of financial markets with sub-second latency. It focuses on clean data visualization and robust security protocols for sensitive transactional data.",
+      features: ["Sub-second Latency Updates", "End-to-End Encryption", "Advanced Charting Engine", "Automated Risk Analysis"],
+      tags: ["TypeScript", "D3.js", "Firebase", "Go"],
       link: "#",
       github: "#",
       dataCode: "PRJ_02_Y"
@@ -30,7 +37,9 @@ const Projects = () => {
       category: "MOBILE_INTERFACE",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800",
       description: "Cross-platform mobile application for fitness tracking and nutrition.",
-      tags: ["React Native", "Expo", "Redux"],
+      longDescription: "BioMetric OS is a next-generation fitness platform that tracks biological markers to provide personalized nutrition and training advice. Built with React Native for seamless cross-platform performance.",
+      features: ["Biometric Sensor Integration", "Personalized AI Coaching", "Offline-first Data Storage", "Social Competition Layer"],
+      tags: ["React Native", "Expo", "Redux", "Node.js"],
       link: "#",
       github: "#",
       dataCode: "PRJ_03_Z"
@@ -40,7 +49,9 @@ const Projects = () => {
       category: "FULLSTACK_SYSTEM",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800",
       description: "A property listing and management system with advanced search.",
-      tags: ["Next.js", "Prisma", "AWS"],
+      longDescription: "Quantum Real Estate redefines the property search experience with its powerful filtering engine and virtual tour capabilities. It handles massive datasets with ease while maintaining a lightweight frontend.",
+      features: ["Advanced Search Engine", "3D Virtual Tours", "Automated Lead Generation", "Secure Document Management"],
+      tags: ["Next.js", "Prisma", "AWS", "gRPC"],
       link: "#",
       github: "#",
       dataCode: "PRJ_04_Q"
@@ -61,10 +72,10 @@ const Projects = () => {
               <span className="text-primary italic">PROTOCOLS.</span>
             </h2>
           </div>
-          <a href="#" className="button-outline whitespace-nowrap group">
+          <button className="button-outline whitespace-nowrap group">
             Decrypt_All_Data
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </a>
+          </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -75,8 +86,9 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
+              onClick={() => setSelectedProject(project)}
               className={cn(
-                "tech-card group relative",
+                "tech-card group relative cursor-pointer",
                 i === 0 ? "md:col-span-2 lg:col-span-2 aspect-[16/8]" : "aspect-[4/5]"
               )}
             >
@@ -88,6 +100,14 @@ const Projects = () => {
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-20 group-hover:opacity-40 grayscale group-hover:grayscale-0"
               />
               
+              {/* Hover View Indicator */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
+                <div className="px-6 py-3 glass border-primary/30 rounded-2xl flex items-center gap-3 scale-75 group-hover:scale-100 transition-transform duration-500">
+                  <Eye className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-black text-white uppercase tracking-widest">Access_Detail</span>
+                </div>
+              </div>
+
               {/* Card Header Info */}
               <div className="absolute top-6 left-6 right-6 flex justify-between items-start z-10">
                 <div className="text-[10px] font-black text-primary/40 tracking-widest">{project.dataCode}</div>
@@ -113,7 +133,7 @@ const Projects = () => {
                 </div>
                 
                 <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                  <div className="flex gap-4">
+                  <div className="flex gap-4" onClick={(e) => e.stopPropagation()}>
                     <a href={project.github} className="text-white/20 hover:text-primary transition-colors">
                       <Github className="w-5 h-5" />
                     </a>
@@ -131,6 +151,12 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      <ProjectDetailModal 
+        isOpen={!!selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+        project={selectedProject} 
+      />
     </section>
   );
 };
