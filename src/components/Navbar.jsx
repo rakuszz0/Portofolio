@@ -26,7 +26,7 @@ const Navbar = ({ onOpenTerminal }) => {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-6",
-        isScrolled ? "bg-dark/80 backdrop-blur-xl border-b border-primary/20 py-4" : "bg-transparent"
+        isScrolled ? "bg-dark/10 backdrop-blur-2xl border-b border-primary/5 py-4" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
