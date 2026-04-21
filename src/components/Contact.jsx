@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, MapPin, Mail, MessageSquare, ArrowRight } from "lucide-react";
+import { Send, MapPin, Mail, MessageSquare, ArrowRight, CheckCircle2 } from "lucide-react";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Construct mailto link
+    const mailtoLink = `mailto:ilahir66@gmail.com?subject=${encodeURIComponent(formData.subject || "Contact from Portfolio")}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+    
+    // Open user's email client
+    window.location.href = mailtoLink;
+    
+    // Show success feedback
+    setIsSubmitted(true);
+    setTimeout(() => setIsSubmitted(false), 5000);
+  };
+
   return (
     <section id="contact" className="py-24 px-6 relative">
       <div className="max-w-7xl mx-auto">
@@ -24,7 +53,7 @@ const Contact = () => {
               </div>
 
               <div className="space-y-6">
-                <a href="mailto:ilahir66@gmail.com" className="flex items-center gap-4 group cursor-pointer">
+                <a href="mailto:ilahir66@gmail.com" className="flex items-center gap-4 group cursor-pointer w-fit">
                   <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
@@ -34,7 +63,7 @@ const Contact = () => {
                   </div>
                 </a>
                 
-                <a href="https://wa.me/6281369982308" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group cursor-pointer">
+                <a href="https://wa.me/6281369982308" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group cursor-pointer w-fit">
                   <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <MessageSquare className="w-5 h-5 text-primary" />
                   </div>
@@ -44,7 +73,7 @@ const Contact = () => {
                   </div>
                 </a>
 
-                <div className="flex items-center gap-4 group">
+                <div className="flex items-center gap-4 group w-fit">
                   <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <MapPin className="w-5 h-5 text-primary" />
                   </div>
@@ -57,33 +86,69 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 relative">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
+                  required
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   type="text"
                   placeholder="Your Name"
                   className="w-full px-6 py-4 rounded-3xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 focus:border-primary focus:outline-none transition-colors"
                 />
                 <input
+                  required
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   type="email"
                   placeholder="Your Email"
                   className="w-full px-6 py-4 rounded-3xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 focus:border-primary focus:outline-none transition-colors"
                 />
               </div>
               <input
+                required
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
                 type="text"
                 placeholder="Subject"
                 className="w-full px-6 py-4 rounded-3xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 focus:border-primary focus:outline-none transition-colors"
               />
               <textarea
+                required
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Your Message"
                 rows={6}
                 className="w-full px-6 py-4 rounded-[32px] bg-white/5 border border-white/10 text-white placeholder:text-white/20 focus:border-primary focus:outline-none transition-colors resize-none"
               />
-              <button className="button-primary w-full justify-center group py-4">
-                Send Message
-                <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <button 
+                type="submit"
+                className="button-primary w-full justify-center group py-4"
+              >
+                {isSubmitted ? (
+                  <span className="flex items-center gap-2">
+                    Message Ready <CheckCircle2 className="w-4 h-4 text-dark" />
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    Send Message <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </span>
+                )}
               </button>
+
+              {isSubmitted && (
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-primary text-[10px] font-black uppercase tracking-widest text-center mt-2"
+                >
+                  Redirecting to your email client...
+                </motion.p>
+              )}
             </form>
           </div>
         </div>

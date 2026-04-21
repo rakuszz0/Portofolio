@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
 import TerminalModal from "./components/TerminalModal";
 import WeatherHUD from "./components/WeatherHUD";
+import WelcomeNotification from "./components/WelcomeNotification";
 
 function App() {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -16,6 +17,7 @@ function App() {
     <div className="relative cursor-none">
       <CustomCursor />
       <WeatherHUD />
+      <WelcomeNotification onOpenTerminal={() => setIsTerminalOpen(true)} />
       <TerminalModal isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
       <Navbar onOpenTerminal={() => setIsTerminalOpen(true)} />
       <main>
