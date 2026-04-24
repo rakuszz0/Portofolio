@@ -3,19 +3,19 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github, ArrowUpRight, Layers, Eye } from "lucide-react";
 import { cn } from "../lib/utils";
 import ProjectDetailModal from "./ProjectDetailModal";
-
+import EM from "../assets/e-m.png";
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const projects = [
     {
       title: "Neural_Nexus_Platform",
-      category: "ECOSYSTEM_ARCH",
+      category: "FULLSTACK_SYSTEM",
       image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800",
-      description: "A sustainable living platform built with Next.js and Tailwind CSS.",
+      description: "A sustainable Portfolio platform built with Next.js and Tailwind CSS.",
       longDescription: "Neural Nexus is a complex ecosystem architecture designed for high-performance data processing and visualization. It leverages a modern stack to ensure maximum scalability and real-time synchronization across distributed nodes.",
       features: ["Real-time Data Streaming", "Neural Network Integration", "Distributed Ledger Storage", "Modular UI Components"],
-      tags: ["React", "Node.js", "PostgreSQL", "Redis"],
+      tags: ["React.js", "Vite.js", "Tailwind CSS"],
       link: "#",
       github: "#",
       dataCode: "PRJ_01_X"
@@ -35,13 +35,13 @@ const Projects = () => {
     {
       title: "BioMetric_Fitness_OS",
       category: "MOBILE_INTERFACE",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800",
-      description: "Cross-platform mobile application for fitness tracking and nutrition.",
+      image: EM,
+      description: "E-Wallet Application.",
       longDescription: "BioMetric OS is a next-generation fitness platform that tracks biological markers to provide personalized nutrition and training advice. Built with React Native for seamless cross-platform performance.",
-      features: ["Biometric Sensor Integration", "Personalized AI Coaching", "Offline-first Data Storage", "Social Competition Layer"],
-      tags: ["React Native", "Expo", "Redux", "Node.js"],
+      features: ["E-Wallet Integration", "Real-time Transaction Tracking"],
+      tags: ["Dart", "Flutter"],
       link: "#",
-      github: "#",
+      github: "https://github.com/rakuszz0/e-money-clone",
       dataCode: "PRJ_03_Z"
     },
     {

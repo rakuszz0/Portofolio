@@ -55,7 +55,7 @@ const About = () => {
               </p>
 
               <p>
-                My core strength lies in the <span className="text-white">Backend Ecosystem</span>. I don't just write code; I architect high-performance, scalable systems using <span className="text-primary">Go</span> and <span className="text-primary">Express.JS</span>. Whether it's building modular APIs with <span className="text-white font-bold">gRPC</span> or orchestrating complex clusters with <span className="text-white font-bold">Kubernetes and Docker</span>, I thrive in the logic-heavy depths of the server side.
+                My core strength lies in the <span className="text-white">Backend Ecosystem</span>. I don't just write code; I architect high-performance, scalable systems using <span className="text-primary">Go</span>,<span className="text-primary">Node.JS</span> and <span className="text-primary">Express.JS</span>. Whether it's building modular APIs with <span className="text-white font-bold">gRPC</span> or orchestrating complex clusters with <span className="text-white font-bold">Kubernetes and Docker</span>, I thrive in the logic-heavy depths of the server side.
               </p>
 
               <div className="p-8 tech-card relative group bg-primary/5 border-primary/20">
