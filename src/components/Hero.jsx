@@ -80,7 +80,7 @@ const Hero = () => {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap justify-center gap-8 pt-8"
           >
-            <a href="/CV&Portfolio-Rahmat_Ilahi.pdf" download className="button-primary">
+            <a href="/CV&Resume-Rahmat-Ilahi.pdf" download className="button-primary">
               <span className="relative z-10 flex items-center gap-2">
                 Init_Resume <Download className="w-4 h-4" />
               </span>

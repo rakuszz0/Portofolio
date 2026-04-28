@@ -17,7 +17,7 @@ const Navbar = ({ onOpenTerminal }) => {
 
   const navLinks = [
     { name: "DATA_01", href: "#home", label: "Home" },
-    { name: "DATA_02", href: "#about", label: "About" },
+    { name: "DATA_02", href: "#about", label: "About Me" },
     { name: "DATA_03", href: "#portfolio", label: "Work" },
     { name: "DATA_04", href: "#contact", label: "Contact" },
   ];

@@ -4,57 +4,88 @@ import { ExternalLink, Github, ArrowUpRight, Layers, Eye } from "lucide-react";
 import { cn } from "../lib/utils";
 import ProjectDetailModal from "./ProjectDetailModal";
 import EM from "../assets/e-m.png";
+import HS from "../assets/Housy.png";
+import R from "../assets/RaI.jpeg";
+import LT from "../assets/LandTick.jpeg";
+import Campaign from "../assets/Za.jpeg";
+import Mm from "../assets/MM.jpeg";
+
+
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const projects = [
     {
-      title: "Neural_Nexus_Platform",
+      title: "Porto_Platform",
       category: "FULLSTACK_SYSTEM",
-      image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800",
+      image: R,
       description: "A sustainable Portfolio platform built with Next.js and Tailwind CSS.",
       longDescription: "Neural Nexus is a complex ecosystem architecture designed for high-performance data processing and visualization. It leverages a modern stack to ensure maximum scalability and real-time synchronization across distributed nodes.",
-      features: ["Real-time Data Streaming", "Neural Network Integration", "Distributed Ledger Storage", "Modular UI Components"],
+      features: ["Contact Form", "Responsive Design", "About Me", "Modular UI Components"],
       tags: ["React.js", "Vite.js", "Tailwind CSS"],
-      link: "#",
-      github: "#",
+      link: "https://rahmat-pearl.vercel.app/",
+      github: "https://github.com/rakuszz0/Portofolio",
       dataCode: "PRJ_01_X"
     },
     {
-      title: "Fintech_Control_Center",
-      category: "DATA_VISUALIZATION",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-      description: "A modern financial dashboard with real-time analytics and tracking.",
-      longDescription: "The Fintech Control Center provides a comprehensive overview of financial markets with sub-second latency. It focuses on clean data visualization and robust security protocols for sensitive transactional data.",
-      features: ["Sub-second Latency Updates", "End-to-End Encryption", "Advanced Charting Engine", "Automated Risk Analysis"],
-      tags: ["TypeScript", "D3.js", "Firebase", "Go"],
-      link: "#",
-      github: "#",
-      dataCode: "PRJ_02_Y"
-    },
-    {
-      title: "BioMetric_Fitness_OS",
+      title: "E-Money_BioMetric_OS",
       category: "MOBILE_INTERFACE",
       image: EM,
       description: "E-Wallet Application.",
-      longDescription: "BioMetric OS is a next-generation fitness platform that tracks biological markers to provide personalized nutrition and training advice. Built with React Native for seamless cross-platform performance.",
+      longDescription: "E-Money BioMetric OS is a cutting-edge mobile application that combines biometric authentication with a secure e-wallet system. It provides a seamless and secure payment experience with real-time transaction tracking.",
       features: ["E-Wallet Integration", "Real-time Transaction Tracking"],
       tags: ["Dart", "Flutter"],
       link: "#",
       github: "https://github.com/rakuszz0/e-money-clone",
-      dataCode: "PRJ_03_Z"
+      dataCode: "PRJ_03_Y"
     },
     {
       title: "Quantum_Real_Estate",
       category: "FULLSTACK_SYSTEM",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800",
+      image: HS,
       description: "A property listing and management system with advanced search.",
       longDescription: "Quantum Real Estate redefines the property search experience with its powerful filtering engine and virtual tour capabilities. It handles massive datasets with ease while maintaining a lightweight frontend.",
-      features: ["Advanced Search Engine", "3D Virtual Tours", "Automated Lead Generation", "Secure Document Management"],
-      tags: ["Next.js", "Prisma", "AWS", "gRPC"],
+      features: ["Advanced Search Engine", "Room Listing Page", "Room Detail Page", "Tenant Data Management"],
+      tags: ["React.js", "Figma", "GoLang", "gRPC", "postgreSQL"],
+      link: "https://housy-e.vercel.app/",
+      github: "https://github.com/rakuszz0/Housy-E",
+      dataCode: "PRJ_04_Z"
+    },
+    {
+      title: "Transportation_Intelligence_Hub",
+      category: "FULLSTACK_SYSTEM",
+      image: LT,
+      description: "A comprehensive platform for managing and optimizing transportation networks.",
+      longDescription: "Transportation Intelligence Hub is a comprehensive platform for managing and optimizing transportation networks. It features real-time traffic analysis, route optimization, and predictive maintenance scheduling for fleets.",
+      features: ["Advanced Search Engine", "Ticket Booking System", "Real-time Traffic Analysis", "Predictive Maintenance Scheduling"],
+      tags: ["React.js", "Figma", "Bootstrap", "GoLang", "GORM", "MYSQL"],
       link: "#",
-      github: "#",
-      dataCode: "PRJ_04_Q"
+      github: "https://github.com/rakuszz0/crash",
+      dataCode: "PRJ_05_A"
+    },
+    {
+      title: "Campaign_Management_Dashboard",
+      category: "FULLSTACK_SYSTEM",
+      image: Campaign,
+      description: "A dashboard for managing and analyzing marketing campaigns with real-time data visualization.",
+      longDescription: "Campaign Management Dashboard is a powerful tool for managing and analyzing marketing campaigns with real-time data visualization. It provides insights into campaign performance and helps in making data-driven decisions.",
+      features: ["Campaign Creation and Management", "Real-time Performance Analytics", "Audience Segmentation", "Integration with Major Ad Platforms"],
+      tags: ["React.js", "Bootstrap", "GoLang", "GORM", "MYSQL"],
+      link: "https://amal-sas.vercel.app/",
+      github: "https://github.com/rakuszz0/Campaigns",
+      dataCode: "PRJ_06_B"
+    },
+    {
+      title: "Mac-Monitor",
+      category: "Backend_System",
+      image: Mm,
+      description: "A system for monitoring and managing macOS performance.",
+      longDescription: "Mac-Monitor is a comprehensive system for monitoring and managing macOS performance. It provides real-time insights into system resources and helps in identifying potential issues before they become critical.",
+      features: ["Real-time Performance Monitoring", "Resource Usage Tracking", "Alerting System", "Data Visualization"],
+      tags: ["GoLang"],
+      link: "#",
+      github: "https://github.com/rakuszz0/mac-monitor",
+      dataCode: "PRJ_07_C"
     },
   ];
 
